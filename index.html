@@ -243,11 +243,11 @@
 
 
 <!-- 
-  Player YouTube buat lagu pas lilin ditiup. Disembunyikan, cuma audionya yang kepake.
+  File lagu x.mp3 harus ditaruh di folder yang sama dengan file HTML ini.
 -->
-<div id="ytPlayerWrap" style="position:fixed;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">
-  <iframe id="ytPlayer" width="1" height="1" src="" frameborder="0" allow="autoplay; encrypted-media"></iframe>
-</div>
+<audio id="bgMusic">
+  <source src="x.mp3" type="audio/mpeg">
+</audio>
 
 <script>
   // Balloons
@@ -300,9 +300,9 @@
     blown = true;
     // confetti nonstop
     confettiInterval = setInterval(()=> burstConfetti(15), 400);
-    // play lagu YouTube
-    const yt = document.getElementById('ytPlayer');
-    yt.src = 'https://www.youtube.com/embed/HYGmYnrWFFE?autoplay=1&start=0';
+    // play lagu x.mp3
+    const audio = document.getElementById('bgMusic');
+    audio.play().catch(()=>{});
     // komentar receh muncul di bawah card ucapan
     const comment = document.getElementById('songComment');
     comment.style.opacity = '0.8';
