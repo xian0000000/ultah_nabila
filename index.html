@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Nabila! 🎉</title>
+<style>
+  :root{
+    --pink:#FF6FA0;
+    --yellow:#FFD23F;
+    --blue:#5ED7FF;
+    --purple:#B388FF;
+    --cream:#FFF6E9;
+    --dark:#3A2E55;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    min-height:100vh;
+    font-family:'Baloo 2','Comic Sans MS',cursive,sans-serif;
+    background:linear-gradient(160deg,var(--cream) 0%, #FFE8F2 50%, #E8F7FF 100%);
+    overflow-x:hidden;
+    color:var(--dark);
+    position:relative;
+  }
+  @font-face{
+    font-family:'Baloo 2';
+    src:local('Baloo 2');
+  }
+  h1,h2{
+    font-family:'Fredoka','Baloo 2',cursive,sans-serif;
+  }
+
+  /* Floating balloons background */
+  .balloon{
+    position:fixed;
+    bottom:-150px;
+    width:60px;
+    height:75px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    opacity:0.85;
+    animation:floatUp linear infinite;
+    z-index:0;
+  }
+  .balloon::after{
+    content:'';
+    position:absolute;
+    bottom:-22px;
+    left:50%;
+    width:2px;
+    height:22px;
+    background:rgba(0,0,0,0.2);
+  }
+  @keyframes floatUp{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);}
+    50%{transform:translateY(-55vh) translateX(20px) rotate(5deg);}
+    100%{transform:translateY(-115vh) translateX(-10px) rotate(-5deg);}
+  }
+
+  .wrap{
+    position:relative;
+    z-index:2;
+    max-width:720px;
+    margin:0 auto;
+    padding:48px 24px 80px;
+    text-align:center;
+  }
+
+  .badge{
+    display:inline-block;
+    background:var(--yellow);
+    color:#5b4500;
+    font-weight:700;
+    padding:6px 18px;
+    border-radius:999px;
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    box-shadow:0 4px 0 rgba(0,0,0,0.08);
+    margin-bottom:18px;
+    transform:rotate(-3deg);
+  }
+
+  h1{
+    font-size:clamp(2.2rem, 7vw, 3.6rem);
+    margin:0 0 6px;
+    color:var(--pink);
+    text-shadow:3px 3px 0 var(--yellow);
+    line-height:1.1;
+  }
+  .subtitle{
+    font-size:clamp(1.1rem, 4vw, 1.5rem);
+    color:var(--purple);
+    font-weight:700;
+    margin-bottom:32px;
+  }
+
+  /* Cake & candle interactive */
+  .cake-zone{
+    margin:20px auto 28px;
+    cursor:pointer;
+    user-select:none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cake-hint{
+    font-size:0.95rem;
+    color:var(--dark);
+    opacity:0.65;
+    margin-top:8px;
+  }
+
+  .card{
+    background:rgba(255,255,255,0.75);
+    backdrop-filter:blur(6px);
+    border-radius:28px;
+    padding:32px 28px;
+    margin-top:28px;
+    box-shadow:0 12px 0 rgba(255,111,160,0.25), 0 14px 30px rgba(0,0,0,0.08);
+    border:3px dashed var(--pink);
+    position:relative;
+  }
+  .card h2{
+    color:var(--blue);
+    font-size:1.5rem;
+    margin-top:0;
+  }
+  .message{
+    font-size:1.05rem;
+    line-height:1.85;
+    text-align:left;
+    color:#4a3a66;
+  }
+  .signoff{
+    margin-top:18px;
+    text-align:right;
+    font-weight:700;
+    color:var(--pink);
+    font-size:1.1rem;
+  }
+
+  .sound-btn{
+    position:fixed;
+    top:18px;
+    right:18px;
+    background:var(--purple);
+    color:white;
+    border:none;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    font-size:1.4rem;
+    cursor:pointer;
+    box-shadow:0 4px 0 rgba(0,0,0,0.15);
+    z-index:10;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .sound-btn:active{transform:translateY(3px);box-shadow:none;}
+
+  .note{
+    margin-top:36px;
+    font-size:0.8rem;
+    color:#7a6a99;
+    line-height:1.6;
+  }
+
+  /* confetti */
+  .confetti{
+    position:fixed;
+    top:-20px;
+    width:10px;
+    height:14px;
+    z-index:5;
+    opacity:0.9;
+    animation:fall linear forwards;
+  }
+  @keyframes fall{
+    to{ transform:translateY(110vh) rotate(540deg); opacity:0.4; }
+  }
+
+  footer{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding-bottom:30px;
+    font-size:0.85rem;
+    color:#9a8ab8;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .balloon, .confetti{animation:none !important; display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <span class="badge">🎂 17 TAHUN SUDAH GEDE 🎂</span>
+  <h1>Happy Birthday,<br>Nabila Niata Sari!</h1>
+  <p class="subtitle">Anjay kelas 12, mau lulus tahun depan!</p>
+
+  <div class="cake-zone" id="cakeZone">
+    <svg width="220" height="220" viewBox="0 0 220 220" id="cakeSvg">
+      <!-- plate -->
+      <ellipse cx="110" cy="190" rx="80" ry="12" fill="#E8D9F5"/>
+      <!-- cake bottom layer -->
+      <rect x="45" y="140" width="130" height="45" rx="10" fill="#FFB6C9"/>
+      <rect x="45" y="140" width="130" height="12" rx="6" fill="#FF8FB3"/>
+      <!-- cake top layer -->
+      <rect x="65" y="105" width="90" height="40" rx="10" fill="#FFE08A"/>
+      <rect x="65" y="105" width="90" height="10" rx="5" fill="#FFD23F"/>
+      <!-- sprinkles -->
+      <circle cx="80" cy="160" r="3" fill="#5ED7FF"/>
+      <circle cx="100" cy="170" r="3" fill="#B388FF"/>
+      <circle cx="130" cy="158" r="3" fill="#FF6FA0"/>
+      <circle cx="150" cy="170" r="3" fill="#5ED7FF"/>
+      <circle cx="90" cy="125" r="2.5" fill="#FF6FA0"/>
+      <circle cx="120" cy="120" r="2.5" fill="#B388FF"/>
+      <!-- candle -->
+      <rect x="103" y="80" width="8" height="28" rx="2" fill="#5ED7FF"/>
+      <!-- flame -->
+      <g id="flame">
+        <ellipse cx="107" cy="74" rx="7" ry="11" fill="#FFD23F"/>
+        <ellipse cx="107" cy="76" rx="4" ry="6" fill="#FF8A3D"/>
+      </g>
+      <text id="smokeText" x="107" y="60" font-size="14" text-anchor="middle" opacity="0" fill="#bbb">~</text>
+    </svg>
+    <p class="cake-hint" id="cakeHint">👉 pencet kue buat tiup lilin</p>
+  </div>
+
+  <div class="card">
+    <h2>Buat Nabila 🎈</h2>
+    <div class="message" id="messageText">
+      Ya Bil, selamat ulang tahun yang ke-17 tahun ya! 🎉<br><br>
+      Semoga jadi orang kaya! 🎂✨<br><br>
+      bingung mikirin kata-kata jadi seadanya aja le
+    </div>
+    <div class="signoff">~ Xina 🎈</div>
+    <p id="songComment" style="margin-top:14px;font-size:0.95rem;color:var(--dark);opacity:0;transition:opacity 0.6s;">btw ini lagu apaan njir, ultah kok lagunya sad wkwkw</p>
+  </div>
+</div>
+
+
+
+<!-- 
+  Player YouTube buat lagu pas lilin ditiup. Disembunyikan, cuma audionya yang kepake.
+-->
+<div id="ytPlayerWrap" style="position:fixed;width:1px;height:1px;overflow:hidden;opacity:0;pointer-events:none;">
+  <iframe id="ytPlayer" width="1" height="1" src="" frameborder="0" allow="autoplay; encrypted-media"></iframe>
+</div>
+
+<script>
+  // Balloons
+  const balloonColors = ['var(--pink)','var(--yellow)','var(--blue)','var(--purple)'];
+  const wrap = document.body;
+  for(let i=0;i<14;i++){
+    const b = document.createElement('div');
+    b.className='balloon';
+    b.style.left = Math.random()*100+'vw';
+    b.style.background = balloonColors[i % balloonColors.length];
+    b.style.width = (40+Math.random()*30)+'px';
+    b.style.height = (55+Math.random()*35)+'px';
+    b.style.animationDuration = (16+Math.random()*8)+'s';
+    b.style.animationDelay = (Math.random()*14)+'s';
+    wrap.appendChild(b);
+  }
+
+  // Confetti burst function
+  function burstConfetti(count=80){
+    const colors = ['#FF6FA0','#FFD23F','#5ED7FF','#B388FF'];
+    for(let i=0;i<count;i++){
+      const c = document.createElement('div');
+      c.className='confetti';
+      c.style.left = Math.random()*100+'vw';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.animationDuration = (2.5+Math.random()*2)+'s';
+      c.style.borderRadius = Math.random()>0.5 ? '50%':'2px';
+      document.body.appendChild(c);
+      setTimeout(()=>c.remove(), 5000);
+    }
+  }
+
+  // Auto confetti on load
+  window.addEventListener('load', ()=> burstConfetti(60));
+
+  // Candle blow interaction
+  const cakeZone = document.getElementById('cakeZone');
+  const flame = document.getElementById('flame');
+  const smoke = document.getElementById('smokeText');
+  const cakeHint = document.getElementById('cakeHint');
+  let blown = false;
+  let confettiInterval = null;
+
+  cakeZone.addEventListener('click', ()=>{
+    if(blown) return; // udah ditiup, ga bisa diulang
+    flame.style.transition = 'opacity 0.4s';
+    flame.style.opacity = '0';
+    smoke.style.opacity = '0.6';
+    cakeHint.textContent = 'yaya saya setuju';
+    blown = true;
+    // confetti nonstop
+    confettiInterval = setInterval(()=> burstConfetti(15), 400);
+    // play lagu YouTube
+    const yt = document.getElementById('ytPlayer');
+    yt.src = 'https://www.youtube.com/embed/HYGmYnrWFFE?autoplay=1&start=0';
+    // komentar receh muncul di bawah card ucapan
+    const comment = document.getElementById('songComment');
+    comment.style.opacity = '0.8';
+  });
+
+  // Music: dihandle otomatis lewat YouTube player pas lilin ditiup
+</script>
+
+</body>
+</html>
